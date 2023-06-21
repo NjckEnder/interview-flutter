@@ -12,5 +12,5 @@
 
 ![screen1](assets/screen5.png)
 
-### the screen use CircularProgressIndicator()
+### the last screen use CircularProgressIndicator()
 ![screen1](assets/screen6.png)
