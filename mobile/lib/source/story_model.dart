@@ -1,36 +1,48 @@
 class StoryModel {
-  final String title, description;
+  final String story;
+  // vote = true is like
+  // vote = false is dislike
+  // vote = null isn't vote
+  final bool? vote;
+  final int id;
 
   StoryModel({
-    required this.title,
-    required this.description,
+    required this.story,
+    this.vote,
+    required this.id,
   });
 
   static final List<StoryModel> lstData = [
     StoryModel(
-      title: 'Boy and barber',
-      description:
-          'A young boy enters a barber shop and the barber whispers to his customer. "This is the dumbest kid in the world. Watch while I prove it you." The barber puts a dollar bill in one hand and two quarters in the other, then calls the boy over and asks, "Which do you want, son?" The boy takes the quarters and leaves. "What did I tell you?" said the barber. "That kid never learns!" Later, when the customer leaves, he sees the same young boy coming out of the ice cream store. "Hey, son! May I ask you a question? Why did you take the quarters instead of the dollar bill?" The boy licked his cone and replied, "Because the day I take the dollar, the game is over!"',
-    ),
+      id: 0,
+        story:
+            'A child asked his father, "How were people born?" \nSo his father said, "Adam and Eve made babies, then their babies became adults and made babies, and so on." \nThe child then went to his mother, asked her the same question and she told him, "We were monkeys then we evolved to become like we are now." \nThe child ran back to his father and said, "You lied to me!" \nHis father replied, "No, your mom was talking about her side of the family."'),
     StoryModel(
-      title: 'Two friends go camping',
-      description:
-          'Two campers are walking through the woods when a huge brown bear suddenly appears in the clearing about 50 feet in front of them. The bear sees the campers and begins to head toward them. The first guy drops his backpack, digs out a pair of sneakers, and frantically begins to put them on. The second guy says, "What are you doing? Sneakers won’t help you outrun that bear." "I don’t need to outrun the bear," the first guy says. "I just need to outrun you."',
-    ),
+      id: 1,
+        story:
+            'Teacher: "Kids,what does the chicken give you?"\nStudent: "Meat!"\nTeacher: "Very good! Now what does the pig give you?"\nStudent: "Bacon!"\nTeacher: "Great! And what does the fat cow give you?"\nStudent: "Homework!"'),
     StoryModel(
-      title: 'Snail slowness',
-      description:
-          'A guy is sitting at home when he hears a knock at the door. He opens the door and sees a snail on the porch. He picks up the snail and throws it as far as he can. Three years later there’s a knock on the door. He opens it and sees the same snail. The snail says, "What the hell was that all about?".',
-    ),
+      id: 2,
+        story:
+            'The teacher asked Jimmy, "Why is your cat at school today Jimmy?"\nJimmy replied crying, "Because I heard my daddy tell my mommy, \'I am going to eat that pussy once Jimmy leaves for school today!\'"'),
     StoryModel(
-      title: 'The man "only one million people"',
-      description:
-          'China has a population of a billion people. One billion. That means even if you’re a one in a million kind of guy, there are still a thousand others exactly like you.',
-    ),
-    StoryModel(
-      title: 'Wishes of three friends:',
-      description:
-          'Three guys stranded on a desert island find a magic lantern containing a genie, who grants them each one wish. The first guy wishes he was off the island and back home. The second guy wishes the same. The third guy says: "I’m lonely. I wish my friends were back here."',
-    ),
+      id: 3,
+        story:
+            'A housewife, an accountant and a lawyer were asked "How much is 2+2?" \nThe housewife replies: "Four!". \nThe accountant says: "I think it\'s either 3 or 4.  Let me run those figures through my spreadsheet one more time." \nThe lawyer pulls the drapes, dims the lights and asks in a hushed voice, "How much do you want it to be?"'),
   ];
+
+  StoryModel.fromJson(Map<String, dynamic> json)
+      : story = json['story'],
+        vote = json['vote'],
+        id = json['id'];
+
+  Map<String, dynamic> toJson() => {
+        'story': story,
+        'vote': vote,
+        'id': id,
+      };
+  // StoryModel.
+  copyWith({String? story, bool? vote}) {
+    return StoryModel(story: story ?? this.story, vote: vote ?? this.vote, id: id);
+  }
 }
