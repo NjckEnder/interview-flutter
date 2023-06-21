@@ -2,4 +2,4 @@
 
 App interview
 
-![screen1](./screen1.png)
+![screen1](mobile/assets/screen1.png)
