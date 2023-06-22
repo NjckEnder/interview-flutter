@@ -92,15 +92,16 @@ class _HomeViewState extends State<HomeView> {
 
   @override
   Widget build(BuildContext context) {
-    final hight = MediaQuery.of(context).size.height;
+    final height = MediaQuery.of(context).size.height;
     final width = MediaQuery.of(context).size.width;
     return Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.white,
           elevation: 0,
-          leading: const Icon(
-            Icons.person_2_outlined,
-            color: ThemeColors.textColor3,
+          leading: SizedBox(
+            height: 50,
+            width: 50,
+            child: Image.asset('assets/logo.png'),
           ),
           actions: [
             Column(
@@ -109,111 +110,138 @@ class _HomeViewState extends State<HomeView> {
               children: const [
                 AppText.bodyMedium(
                   text: 'Handicrafted by',
-                  color: ThemeColors.textColor2,
+                  color: ThemeColors.textColor5,
                 ),
-                AppText.bodyMedium(
+                AppText.bodyLarge(
                   text: 'Jim HLS',
-                  color: ThemeColors.textColor4,
+                  color: ThemeColors.textColor3,
                 ),
               ],
             ),
-            const Padding(
-              padding: EdgeInsets.all(8.0),
-              child: CircleAvatar(
-                child: Icon(
-                  Icons.person_3_outlined,
-                  color: Colors.white,
-                ),
-              ),
-            )
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: CircleAvatar(child: Image.asset('assets/icon.jpg')),
+            ),
           ],
         ),
         body: (selecStory != null && listStory.isNotEmpty)
-            ? Column(children: [
-                Expanded(
-                    flex: 1,
-                    child: SizedBox(
-                        height: hight,
+            ? Column(
+                children: [
+                  Expanded(
+                      flex: 1,
+                      child: SizedBox(
+                          height: height,
+                          width: width,
+                          child: DecoratedBox(
+                            decoration:
+                                const BoxDecoration(color: Color(0xff29B363)),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: const [
+                                Padding(
+                                  padding: EdgeInsets.only(bottom: 18),
+                                  child: AppText.titleMedium(
+                                    text: 'A joke a day keeps the doctor away',
+                                    color: ThemeColors.textColor1,
+                                  ),
+                                ),
+                                AppText.bodyMedium(
+                                  text:
+                                      'If you joke wrong way, your teeth have to pay. (Serious)',
+                                  color: ThemeColors.textColor1,
+                                )
+                              ],
+                            ),
+                          ))),
+                  Expanded(
+                      flex: 2,
+                      child: SizedBox(
+                        height: height,
                         width: width,
                         child: DecoratedBox(
-                          decoration:
-                              BoxDecoration(color: Colors.green.shade600),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: const [
-                              AppText.titleLarge(
-                                text: 'A joke a day keeps the doctor away',
-                                color: ThemeColors.textColor1,
-                              ),
-                              AppText.bodyLarge(
-                                text:
-                                    'If you joke wrong way, your teeth have to pay. (Serious)',
-                                color: ThemeColors.textColor1,
-                              )
-                            ],
-                          ),
-                        ))),
-                Expanded(
-                    flex: 2,
-                    child: SizedBox(
-                      height: hight,
-                      width: width,
-                      child: DecoratedBox(
-                        decoration: const BoxDecoration(color: Colors.white),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          // crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Expanded(
-                              child: Padding(
-                                padding: const EdgeInsets.symmetric(
-                                    horizontal: 10, vertical: 30),
-                                child: AppText.bodyMedium(
-                                  text: selecStory?.story ?? '',
-                                  // text: listStory.toString(),
-                                  color: Colors.black,
-                                  textAlign: TextAlign.start,
-                                ),
-                              ),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.only(bottom: 10),
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceEvenly,
-                                children: [
-                                  AppButton.min(
-                                    title: 'This is Funny!',
-                                    onPressed: () =>
-                                        onPressedButton(vote: true),
+                          decoration: const BoxDecoration(color: Colors.white),
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 14.0, vertical: 20),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                Expanded(
+                                  child: AppText.bodyMedium(
+                                    text: selecStory?.story ?? '',
+                                    color: ThemeColors.textColor4,
+                                    textAlign: TextAlign.start,
                                   ),
-                                  AppButton.min(
-                                    title: 'this is not Funny.',
-                                    onPressed: () =>
-                                        onPressedButton(vote: false),
-                                    color: Colors.green,
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.only(bottom: 10),
+                                  child: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceEvenly,
+                                    children: [
+                                      AppButton.min(
+                                        title: 'This is Funny!',
+                                        onPressed: () =>
+                                            onPressedButton(vote: true),
+                                        color: const Color(0xff2C7EDB),
+                                      ),
+                                      AppButton.min(
+                                        title: 'this is not Funny.',
+                                        onPressed: () =>
+                                            onPressedButton(vote: false),
+                                        color: const Color(0xff29B363),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                // Expanded(child: Divider(height: height, color: Colors.black,)),
+                              ],
+                            ),
+                          ),
+                        ),
+                      )),
+                  Expanded(
+                      flex: 1,
+                      child: SizedBox(
+                          height: height,
+                          width: width,
+                          child: DecoratedBox(
+                            decoration:
+                                const BoxDecoration(color: Colors.white),
+                            child: Padding(
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 14),
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.end,
+                                // crossAxisAlignment: CrossAxisAlignment.end,
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.only(bottom: 8.0),
+                                    child: Container(
+                                      height: 1,
+                                      width: width,
+                                      color: const Color(0xffEDEDED),
+                                    ),
+                                  ),
+                                  const AppText.bodySmall(
+                                    text:
+                                        'This appis created as part of part of Hlsolutions program. The materials contained on this website are provided for general information only and do not constitute any form of advice. HLS assumes no responsobility for the accuracy of any particular statement and accepts no liability for any loss or damage which may arice from reliance on the information contained on this site.',
+                                    color: ThemeColors.textColor5,
+                                  ),
+                                  const Padding(
+                                    padding: EdgeInsets.symmetric(vertical: 10),
+                                    child: AppText.bodyMedium(
+                                      text: 'Copyright 2021 HLS',
+                                      color: ThemeColors.textColor4,
+                                    ),
                                   ),
                                 ],
                               ),
-                            )
-                          ],
-                        ),
-                      ),
-                    )),
-                Expanded(
-                    flex: 1,
-                    child: SizedBox(
-                        height: hight,
-                        width: width,
-                        child: const DecoratedBox(
-                          decoration: BoxDecoration(color: Colors.blue),
-                          child: AppText.headlineLarge(
-                            text: 'Testing',
-                            color: ThemeColors.textColor1,
-                          ),
-                        )))
-              ])
+                            ),
+                          )))
+                ],
+              )
             : const Center(
                 child: CircularProgressIndicator(),
               ));

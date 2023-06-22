@@ -15,7 +15,7 @@ class AppButton extends StatelessWidget {
     this.margin,
     this.onPressed,
     this.color,
-  }) : _ratio = 0.45;
+  }) : _ratio = 0.35;
   const AppButton.max({
     super.key,
     required this.title,
@@ -31,7 +31,8 @@ class AppButton extends StatelessWidget {
 
     return Container(
       width: width,
-      height: kToolbarHeight,
+      height: 40,
+      // height: MediaQuery.of(context).size.height * 0.07,
       margin: margin,
       child: DecoratedBox(
         decoration: BoxDecoration(
